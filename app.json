@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "react-native-coingecko",
-    "slug": "react-native-coingecko",
+    "slug": "cryptomarketplace",
+    "owner": "danreyesdev",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
