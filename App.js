@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, FlatList, StyleSheet } from 'react-native'
+import CoinItem from './components/CoinItem'
 
 
 const App = () => {
@@ -25,7 +26,7 @@ const App = () => {
       <FlatList 
         data={coins}
         renderItem={({item}) => {
-          return <Text>{item.name}</Text>
+          return <CoinItem coin={item}/>
         }}
       />
     </View>
