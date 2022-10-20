@@ -6,10 +6,24 @@ const CoinItem = ({ coin }) => {
     <View style={styles.containerItem}>
       <View style={styles.coinNames}>
         <Image style={styles.image} source={{ uri: coin.image }} />
-        <Text style={styles.text}>{coin.name}</Text>
-        <Text>{coin.symbol}</Text>
+        <View style={styles.containerNames}>
+          <Text style={styles.text}>{coin.name}</Text>
+          <Text style={styles.textSymbol}>{coin.symbol}</Text>
+        </View>
       </View>
-      <Text style={styles.price}>{coin.current_price}</Text>
+      <View>
+        <Text style={styles.textPrice}>${coin.current_price}</Text>
+        <Text
+          style={[
+            styles.pricePercentage,
+            coin.price_change_percentage_24h > 0
+              ? styles.priceUp
+              : styles.priceDown,
+          ]}
+        >
+          {coin.price_change_percentage_24h}
+        </Text>
+      </View>
     </View>
   );
 };
@@ -21,8 +35,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  containerNames: {
+    marginLeft: 10,
+  },
   coinNames: {
-    flexDirection: 'row'
+    flexDirection: "row",
   },
   image: {
     width: 30,
@@ -31,8 +48,22 @@ const styles = StyleSheet.create({
   text: {
     color: "#ffffff",
   },
-  price: {
+  textSymbol: {
+    color: "#434343",
+    textTransform: "uppercase",
+  },
+  textPrice: {
     color: "#ffffff",
+    textAlign: 'right'
+  },
+  pricePercentage: {
+    textAlign: 'right'
+  },
+  priceUp: {
+    color: "#00B5B9",
+  },
+  priceDown: {
+    color: "#FF0000",
   },
 });
 
